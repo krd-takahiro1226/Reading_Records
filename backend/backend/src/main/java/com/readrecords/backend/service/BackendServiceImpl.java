@@ -13,7 +13,6 @@ import com.readrecords.backend.repository.ReadRecordsRepository;
 import jakarta.transaction.Transactional;
 
 @Service
-@Transactional
 public class BackendServiceImpl implements BackendService{
   @Autowired
   ReadRecordsRepository repository;
@@ -28,6 +27,7 @@ public class BackendServiceImpl implements BackendService{
     return AllReadRecords;
   }
   @Override
+  @Transactional
   public void createReadRecords(ReadRecords records) {
     // TODO Auto-generated method stub
     
