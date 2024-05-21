@@ -1,5 +1,5 @@
 CREATE TABLE reading_records (
-    bok_id INT NOT NULL AUTO_INCREMENT,
+    book_id INT NOT NULL AUTO_INCREMENT,
     book_name VARCHAR(30) NOT NULL,
     author VARCHAR(30) NOT NULL,
     start_date DATE,
