@@ -2,10 +2,17 @@ package com.readrecords.backend.entity;
 
 import java.util.Date;
 
-import lombok.Data;
+import org.springframework.data.annotation.Id;
 
+import jakarta.persistence.Entity;
+import lombok.Data;
 @Data
+@Entity
 public class ReadRecords {
+  // 将来的にISBNを主キーとするが、一旦今は書籍名を主キーとする
+  // ISBNを主キーとする場合は、新しくEntityクラスに追加して差し替える形がいいか、今のを修正するのがいいかは要検討
+  @Id
+  private Integer book_id;
   private String book_name;
   private String author;
   private Date start_date;
