@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>サンプル</title>
+</head>
+<body>
+	<table border="1" th:unless="${#lists.isEmpty(readrecords)}" style="table-layout: fixed;">
+		<tr>
+			<th>book_id</th>
+			<th>書籍名</th>
+			<th>著者</th>
+			<th>ユーザID</th>
+			<th>読み始めた日</th>
+      <th>読了日</th>
+      <th>読んだ回数</th>
+      <th>ジャンル</th>
+      <th>優先度</th>
+      <th>メモ</th>
+		</tr>
+		<tr th:each="obj : ${readrecords}" align="center">
+			<td th:text="${obj.book_id}"></td>
+			<td th:text="${obj.book_name}"></td>
+			<td th:text="${obj.author}"></td>
+      <td th:text="${obj.user_id}"></td>
+      <td th:text="${obj.start_date}"></td>
+      <td th:text="${obj.end_date}"></td>
+      <td th:text="${obj.read_count}"></td>
+      <td th:text="${obj.genre}"></td>
+      <td th:text="${obj.priority}"></td>
+      <td th:text="${obj.memo}"></td>
+			<!-- 編集ボタン -->
+			<td>
+        <!-- book_idじゃないような気がしつつも... -->
+				<form method="get" th:action="@{sample/{id}(id=${obj.book_id})}">
+					<input type="submit" value="編集">
+				</form>
+			</td>
+		</tr>
+	</table>
+	<!-- 新規登録
+	<!-- newSampleがtrueの場合、新規登録処理、そうではない場合、更新処理にそれぞれ変更します -->
+	<!-- <form method="post"
+	        th:action="${sampleForm.NewSample}? @{/sample/insert} : @{/sample/update}"
+	        th:object="${sampleForm}">
+	        <hr>
+	        <label>ID:</label>
+	        <input type="number" th:field="*{id}">
+	        <br>
+	        <label>名前:</label>
+	        <input type="text" th:field="*{name}">
+	        <br>
+	        <label>男性:</label>
+	        <input type="radio" value=0 th:field="*{gender}">
+	        <label>女性:</label>
+	        <input type="radio" value=1 th:field="*{gender}">
+	        <br>
+	        <label>年齢:</label>
+	        <input type="number" th:field="*{age}">
+	        <br>
+	        <input type="submit" value="送信">
+	</form> -->
+    <!-- 追加部分 -->
+    <!-- <p th:unless="${sampleForm.newSample}">
+		<a href="#" th:href="@{/sample}">一覧画面へ戻る</a>
+	</p> --> -->
+</body>
