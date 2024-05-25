@@ -1,6 +1,6 @@
 # DB設計
 ## 読書管理テーブル(reading_records)
-- book_id 
+- book_id
   - Int
   - Not Null
   - 主キー
@@ -9,24 +9,51 @@
 - 著者(author)
   - varchar(30)
   - Not Null
+- ユーザid(user_id)
+  - Int
 - 読み始めた日(start_date)
   - Date
-- 読了日
+- 読了日(end_date)
   - Date
+  - 直近読んだ日
 - 読んだ回数(read_count)
   - Int
-- ジャンル
+- ジャンル(genre)
   - varchar(20)
   - 選択形式？自由入力
   - 選択
     - 一覧を検討する必要あり
-- 優先度
+- 優先度(priority)
   - Int
   - 読んだことない本についての想定だが、読んだことある本についても登録できるようにする
   - デフォルトは値なし
   - 登録された値が小さいほど優先度高い
     - 新しく優先度登録があるとシフトする必要あり
-- メモ
+- メモ(memo)
   - varchar(100)
   - 追加できるような形がいい
     - どうやるんだそれ...
+## ユーザ管理テーブル(users)
+- ユーザid(user_id)
+  - Int
+  - AUTO_INCREMENT
+  - PRIMARY KEY
+- ユーザ名(user_name)
+  - VARCHAR(50)
+  - NOT NULL
+  - UNIQUE
+- メールアドレス(email)
+  - VARCHAR(100)
+  - NOT NULL
+  - UNIQUE
+- パスワード(password)
+  - VARCHAR(255)
+  - NOT NULL
+- 権限(role)
+  - VARCHAR(20)
+  - DEFAULT 'user'
+  - 管理者:admin
+- アカウント作成日時(created_at)
+  - TimeStamp
+- 最終更新日時(updated_at)
+  - Timestamp
