@@ -1,9 +1,11 @@
 # DB設計
 ## 読書管理テーブル(reading_records)
-- 書籍名(book_name)
-  - varchar(30)
+- book_id 
+  - Int
   - Not Null
   - 主キー
+- 書籍名(book_name)
+  - varchar(30)
 - 著者(author)
   - varchar(30)
   - Not Null
