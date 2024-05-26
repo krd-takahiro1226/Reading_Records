@@ -14,6 +14,7 @@ public class ReadRecords {
   private Integer book_id;
   private String book_name;
   private String author;
+  private Integer user_id;
   private Date start_date;
   private Date end_date;
   private Integer read_count;

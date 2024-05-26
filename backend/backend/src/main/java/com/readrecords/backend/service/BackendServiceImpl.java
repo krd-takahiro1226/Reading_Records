@@ -30,7 +30,13 @@ public class BackendServiceImpl implements BackendService{
   @Override
   @Transactional
   public void createReadRecords(ReadRecords records) {
-    repository.save(records);
+    repository.createReadRecords(records.getBook_name(), 
+                                records.getAuthor(), 
+                                records.getStart_date() , 
+                                0, 
+                                records.getGenre(), 
+                                records.getPriority(), 
+                                records.getMemo());
   }
 /**
  * @param records 更新後のレコード内容
