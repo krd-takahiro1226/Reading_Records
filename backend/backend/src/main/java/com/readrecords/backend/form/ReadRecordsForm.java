@@ -2,6 +2,8 @@ package com.readrecords.backend.form;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -12,7 +14,7 @@ public class ReadRecordsForm {
   private String book_name;
   @NotNull
   private String author;
-  // 日付として妥当かバリデーションを行いたいが、自作クラスが必要そうなので一旦先送り
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date start_date;
   private Integer read_count;
   private String genre;
