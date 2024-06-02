@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class UserLoginFrom {
+public class UserLoginForm {
   @NotNull
   @Max(50)
   private String user_name;
