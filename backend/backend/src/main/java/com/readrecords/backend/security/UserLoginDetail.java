@@ -8,11 +8,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.readrecords.backend.entity.UserLogin;
 
-public class LoginUserDetail implements UserDetails{
+public class UserLoginDetail implements UserDetails{
   private UserLogin userLogin;
   private Collection<? extends GrantedAuthority> authorities;
 // 修正が必要
-  public LoginUserDetail(UserLogin userLogin, Collection<? extends GrantedAuthority> authorities) {
+  public UserLoginDetail(UserLogin userLogin, Collection<? extends GrantedAuthority> authorities) {
     this.userLogin = userLogin;
     this.authorities = userLogin.getRole().stream().map(role -> new SimpleGrantedAuthority(role)).toList();
   }
