@@ -4,9 +4,11 @@ import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 @Data
 @Entity
+@Table(name = "read_records")
 public class ReadRecords {
   // 将来的にISBNを主キーとするが、一旦今は書籍名を主キーとする
   // ISBNを主キーとする場合は、新しくEntityクラスに追加して差し替える形がいいか、今のを修正するのがいいかは要検討
