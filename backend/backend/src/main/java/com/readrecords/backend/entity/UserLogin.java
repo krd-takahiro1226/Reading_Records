@@ -13,7 +13,7 @@ import lombok.Data;
 public class UserLogin {
   @Id
   private Integer user_id;
-  private String user_name;
+  private String username;
   private String email;
   private String password;
   private List<String> role;

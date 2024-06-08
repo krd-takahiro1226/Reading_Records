@@ -8,7 +8,7 @@ import lombok.Data;
 public class UserLoginForm {
   @NotNull
   @Max(50)
-  private String user_name;
+  private String username;
   @NotNull
   @Max(255)
   private String password;
