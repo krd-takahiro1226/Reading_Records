@@ -21,11 +21,7 @@ public class UserLoginDetails implements UserDetails{
   }
   @Override
   public String getUsername() {
-<<<<<<< HEAD
     return userLogin.getUsername();
-=======
-    return userLogin.getUser_name();
->>>>>>> 137f863653f066361b4f19f867bbb109ffea9885
   }
   // アカウントの有効期限切れ(現時点では判定しない)
   @Override
