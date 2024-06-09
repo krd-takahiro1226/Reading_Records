@@ -1,7 +1,7 @@
 package com.readrecords.backend.entity;
 
-import java.util.Date;
-import java.util.List;
+import java.io.Serializable;
+import java.sql.Timestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,14 +9,15 @@ import jakarta.persistence.Table;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "user_login")
-public class UserLogin {
+@Table(name = "users")
+public class UserLogin implements Serializable {
+  private static final long serialVersionUID = 1L;
   @Id
   private Integer user_id;
   private String username;
   private String email;
   private String password;
-  private List<String> role;
-  private Date created_at;
-  private Date updated_at;
+  private String role;
+  private Timestamp created_at;
+  private Timestamp updated_at;
 }
