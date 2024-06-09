@@ -22,7 +22,7 @@ public class SecurityConfig {
       // ユーザ名・パスワードの送信先URL
       .loginProcessingUrl("/login")
       // ログイン成功後の遷移先URL
-      .defaultSuccessUrl("/")
+      .defaultSuccessUrl("/api/v1/readrecords")
       // ログイン失敗時の遷移先URL
       .failureUrl("/login?error")
       // ログインしていなくてもログイン画面へのアクセスを許可する
@@ -39,10 +39,12 @@ public class SecurityConfig {
       .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
       // "/"は全ユーザがアクセス可能
       .requestMatchers("/").permitAll()
+      // "/login"は全ユーザがアクセス可能
+      .requestMatchers("/login").permitAll()
       // generalはgeneralユーザがアクセス可能
-      .requestMatchers("/general").hasRole("GENERAL")
+      .requestMatchers("/general").hasRole("general")
       // adminはadminユーザがアクセス可能
-      .requestMatchers("/admin").hasRole("ADMIN")
+      .requestMatchers("/admin").hasRole("admin")
       // 上記で指定したURLを除く任意のURLは認証済みユーザがアクセス可能
       .anyRequest().authenticated()
     );
