@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,10 +46,9 @@
     </style>
 </head>
 <body>
-
 <div class="container">
     <h2>ログイン</h2>
-    <form>
+    <form th:action="@{/login}" action = "show.html" method="post">
         <div class="form-group">
             <label for="username">ユーザー名</label>
             <input type="text" id="username" name="username" required>
