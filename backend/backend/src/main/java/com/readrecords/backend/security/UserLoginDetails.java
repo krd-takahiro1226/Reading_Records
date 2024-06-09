@@ -3,21 +3,20 @@ package com.readrecords.backend.security;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.readrecords.backend.entity.UserLogin;
 
-public class UserLoginDetails implements UserDetails{
+public class UserLoginDetails implements UserDetails {
   private UserLogin userLogin;
-  private Collection<? extends GrantedAuthority> authorities;
+  // private Collection<? extends GrantedAuthority> authorities;
   public UserLoginDetails(UserLogin userLogin) {
     this.userLogin = userLogin;
-    this.authorities = userLogin.getRole().stream().map(role -> new SimpleGrantedAuthority(role)).toList();
+    // this.authorities = userLogin.getRole().stream().map(role -> new SimpleGrantedAuthority(role)).toList();
   }
   @Override
   public String getPassword() {
-    return userLogin.getPassword();
+    return this.userLogin.getPassword();
   }
   @Override
   public String getUsername() {
@@ -43,6 +42,7 @@ public class UserLoginDetails implements UserDetails{
   }
   @Override
   public Collection<? extends GrantedAuthority>getAuthorities() {
-    return authorities;
+    // return authorities;
+    return null;
   }
 }
