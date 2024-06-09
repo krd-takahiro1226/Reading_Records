@@ -38,7 +38,7 @@
   - Int
   - AUTO_INCREMENT
   - PRIMARY KEY
-- ユーザ名(user_name)
+- ユーザ名(username)
   - VARCHAR(50)
   - NOT NULL
   - UNIQUE
