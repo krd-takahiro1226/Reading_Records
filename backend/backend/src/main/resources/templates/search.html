@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>書籍検索</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            height: 100%;
+            margin: 10px auto;
+        }
+        .container {
+            width: 60%;
+        }
+
+        .buttons {
+            text-align: center;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .buttons button.clear {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>書籍検索</h1>
+    <p>検索するキーワードを入力してください。</p>
+    <form>
+        <div class="form-group">
+            <label for="title">タイトル</label>
+            <input type="search" id="title" name="title">
+            <select name="title-and-or">
+                <option value="AND">AND</option>
+                <option value="OR">OR</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="author">著者名</label>
+            <input type="search" id="author" name="author">
+            <select name="author-and-or">
+                <option value="AND">AND</option>
+                <option value="OR">OR</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input type="search" id="isbn" name="isbn">
+        </div>
+        <div class="buttons">
+            <button type="submit">検索</button>
+            <button type="reset" class="clear">クリア</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
