@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.readrecords.backend.repository.UserLoginRepostoty;
-import com.readrecords.backend.security.UserLoginDetails;
 import com.readrecords.backend.service.UserLoginDetailsService;
 
 @Controller
