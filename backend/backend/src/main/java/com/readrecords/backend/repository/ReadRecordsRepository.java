@@ -14,7 +14,7 @@ import com.readrecords.backend.entity.ReadRecords;
 @Repository
 public interface ReadRecordsRepository extends CrudRepository<ReadRecords, Integer> {
   @Modifying
-  @Query(value="INSERT INTO readrecords VALUES(:book_name, :author, :start_date, :read_count, :genre, :priority, :memo)",nativeQuery = true)
+  @Query(value="INSERT INTO readrecords" + "VALUES(:book_name, :author, :start_date, :read_count, :genre, :priority, :memo)",nativeQuery = true)
   void createReadRecords(@Param("book_name") String book_name
                         ,@Param("author") String author
                         ,@Param("start_date") Date start_date
