@@ -23,11 +23,4 @@ public class BackendController {
     readRecordForm.setRead_count(0);
     return readRecordForm;
   }
-  @GetMapping
-  public String showAllReadRecords(ReadRecordsForm readRecordsForm, Model model){
-    Iterable<ReadRecords> readRecords = service.findAll();
-    model.addAttribute("readrecords", readRecords);
-    return "show";
-  }
-
 }
