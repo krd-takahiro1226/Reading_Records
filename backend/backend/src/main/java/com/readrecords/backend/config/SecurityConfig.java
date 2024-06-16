@@ -24,7 +24,7 @@ public class SecurityConfig {
       // ログイン成功後の遷移先URL
       .defaultSuccessUrl("/menu")
       // ログイン失敗時の遷移先URL
-      .failureUrl("/login?error")
+      .failureUrl("/login_error")
       // ログインしていなくてもログイン画面へのアクセスを許可する
       .permitAll()
     )
