@@ -22,7 +22,7 @@ public class SecurityConfig {
       // ユーザ名・パスワードの送信先URL
       .loginProcessingUrl("/login")
       // ログイン成功後の遷移先URL
-      .defaultSuccessUrl("/api/v1/readrecords")
+      .defaultSuccessUrl("/menu")
       // ログイン失敗時の遷移先URL
       .failureUrl("/login?error")
       // ログインしていなくてもログイン画面へのアクセスを許可する
@@ -31,7 +31,7 @@ public class SecurityConfig {
     // ログアウトの設定記述
     .logout(logout -> logout
       // ログアウト後の遷移先URL
-      .logoutSuccessUrl("/")
+      .logoutSuccessUrl("/login")
     )
     // URLごとの認可設定
       .authorizeHttpRequests(authz -> authz
