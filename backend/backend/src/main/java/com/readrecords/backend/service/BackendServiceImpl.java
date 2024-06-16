@@ -67,4 +67,34 @@ public class BackendServiceImpl implements BackendService{
   public Optional<ReadRecords> findByAuthor(String author) {
     return repository.findByAuthor(author);
   }
+
+  @Override
+  public Optional<ReadRecords> findByPartialBookname(String book_name) {
+    return repository.findByPartialBookname(book_name);
+  }
+
+  @Override
+  public Optional<ReadRecords> findByPartialAuthor(String author) {
+    return repository.findByPartialAuthor(author);
+  }
+
+  @Override
+  public Optional<ReadRecords> findByBooknameAndAuthor(String book_name, String author) {
+    return repository.findByBooknameAndAuthor(book_name, author);
+  }
+
+  @Override
+  public Optional<ReadRecords> findByBooknameAndPartialAuthor(String book_name, String author) {
+    return repository.findByBooknameAndPartialAuthor(book_name, author);
+  }
+
+  @Override
+  public Optional<ReadRecords> findByPartialBooknameAndAuthor(String book_name, String author) {
+    return repository.findByPartialBooknameAndAuthor(book_name, author);
+  }
+
+  @Override
+  public Optional<ReadRecords> findByPartialBooknameAndPartialAuthor(String book_name, String author) {
+    return repository.findByPartialBooknameAndPartialAuthor(book_name, author);
+  }
 }
