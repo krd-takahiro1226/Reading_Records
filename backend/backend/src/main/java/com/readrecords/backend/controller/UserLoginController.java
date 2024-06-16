@@ -27,7 +27,7 @@ public class UserLoginController {
   public String executeLogin(String username, String password, Model model) {
     String collectPassword = userLoginRepostoty.findPasswordByUsername(username);
     if (passwordEncoder.matches(password, collectPassword)) {
-      return "redirect:/show";
+      return "redirect:/menu";
     }
     else
       return "redirect:/user_login";
