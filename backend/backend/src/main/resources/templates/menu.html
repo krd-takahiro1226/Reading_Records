@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+    lang="ja"
+><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>メニュー</title>
@@ -90,7 +92,10 @@
         <!-- ログアウト処理は要実装。(セッションをcookieで管理するなら、サーバー側でセッションを破棄する的なイメージ) -->
     </div>
 
-    <p style="text-align: left">usernameさん、ようこそ</p>
+    <p style="text-align: left">
+    <span sec:authentication="name"></span>
+    さん、ようこそ
+    </p>
 
     <h2>メニュー</h2>
     <p style="text-align: left">操作を選んでください。</p>
