@@ -11,6 +11,8 @@ import ch.qos.logback.core.model.Model;
 
 @Controller
 @RequestMapping("/searchBooks")
+// 検索条件の違いでアクセスするURLが異なる(HTMLで指定)
+// その検索条件の違いで呼び出すメソッドを制御するためのController(呼び出すメソッドは未実装)
 public class BookSearchController {
   @Autowired
   BookRecordsRepository bookRecordsRepository;

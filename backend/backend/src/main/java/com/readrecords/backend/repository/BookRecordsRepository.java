@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.readrecords.backend.entity.BookRecords;
 
 @Repository
+// 検索条件(and,orの組み合わせ)ごとに呼び出すメソッドが異なるためそれらに対応するメソッドを定義
 public interface BookRecordsRepository extends CrudRepository<BookRecords, String> {
   @Modifying
   @Query(value="INSERT INTO book_records" + "VALUES(:book_name, :author, :genre, :publication_year, :publisher)",nativeQuery = true)
