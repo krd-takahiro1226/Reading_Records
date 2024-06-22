@@ -1,12 +1,10 @@
-CREATE TABLE read_records (
-    book_id INT NOT NULL AUTO_INCREMENT,PRIMARY KEY (book_id),
-    book_name VARCHAR(30) NOT NULL,
-    author VARCHAR(30) NOT NULL,
+CREATE TABLE IF NOT EXISTS read_records (
+    record_id INT AUTO_INCREMENT PRIMARY KEY,
+    ISBN VARCHAR(13),
     user_id INT,
     start_date DATE,
     end_date DATE,
     read_count INT,
-    genre VARCHAR(20),
     priority INT,
     memo VARCHAR(100)
 );

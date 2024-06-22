@@ -12,6 +12,7 @@ import lombok.Data;
 @Table(name = "book_records")
 public class BookRecords {
   @Id
+  private String ISBN;
   private String book_name;
   private String author;
   private String genre;

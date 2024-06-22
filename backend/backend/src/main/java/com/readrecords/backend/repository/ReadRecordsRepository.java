@@ -14,14 +14,14 @@ import com.readrecords.backend.entity.ReadRecords;
 @Repository
 public interface ReadRecordsRepository extends CrudRepository<ReadRecords, Integer> {
   @Modifying
-  @Query(value="INSERT INTO readrecords" + "VALUES(:book_name, :author, :start_date, :read_count, :genre, :priority, :memo)",nativeQuery = true)
-  void createReadRecords(@Param("book_name") String book_name
-                        ,@Param("author") String author
-                        ,@Param("start_date") Date start_date
-                        ,@Param("read_count") Integer read_count
-                        ,@Param("genre") String genre
-                        ,@Param("priority") Integer priority
-                        ,@Param("memo") String memo);
+  @Query(value="INSERT INTO readrecords" + "VALUES(:ISBN, :user_id, :start_date, :end_date, :read_count, :priority, :memo)",nativeQuery = true)
+  void createReadRecords(@Param("ISBN") String ISBN, 
+                        @Param("user_id") Integer user_id, 
+                        @Param("start_date") Date start_date, 
+                        @Param("end_date") Date end_date, 
+                        @Param("read_count") Integer read_count, 
+                        @Param("priority") Integer priority, 
+                        @Param("memo") String memo);
   @Modifying
   @Query(value="select * from readrecords" + "where book_name = :book_name",nativeQuery = true)
   Optional<ReadRecords> findByBookname(@Param("book_name") String book_name);

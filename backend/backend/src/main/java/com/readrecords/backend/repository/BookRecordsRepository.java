@@ -15,8 +15,9 @@ import com.readrecords.backend.entity.BookRecords;
 // 検索条件(and,orの組み合わせ)ごとに呼び出すメソッドが異なるためそれらに対応するメソッドを定義
 public interface BookRecordsRepository extends CrudRepository<BookRecords, String> {
   @Modifying
-  @Query(value="INSERT INTO book_records" + "VALUES(:book_name, :author, :genre, :publication_year, :publisher)",nativeQuery = true)
-  void createReadRecords(@Param("book_name") String book_name
+  @Query(value="INSERT INTO book_records" + "VALUES(:ISBN, :book_name, :author, :genre, :publication_year, :publisher)",nativeQuery = true)
+  void createReadRecords(@Param("ISBN") String ISBN
+                        ,@Param("book_name") String book_name
                         ,@Param("author") String author
                         ,@Param("genre") String genre
                         ,@Param("publication_year") Date publication_year
