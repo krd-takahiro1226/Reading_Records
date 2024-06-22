@@ -15,11 +15,6 @@ import com.readrecords.backend.service.BackendService;
 public class MenuController {
   @Autowired
   BackendService service;
-  @RequestMapping("/menu")
-  @GetMapping
-  public String showMenu() {
-    return "menu";
-  }
   @RequestMapping("/showRecords")
   @GetMapping
   public String showAllReadRecords(ReadRecordsForm readRecordsForm, Model model){

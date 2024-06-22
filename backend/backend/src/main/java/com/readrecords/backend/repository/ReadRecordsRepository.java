@@ -28,6 +28,24 @@ public interface ReadRecordsRepository extends CrudRepository<ReadRecords, Integ
   @Modifying
   @Query(value="select * from readrecords" + "where author = :author",nativeQuery = true)
   Optional<ReadRecords> findByAuthor(@Param ("author") String author);
+  @Modifying
+  @Query(value="select * from readrecords" + "where book_name like :book_name",nativeQuery = true)
+  Optional<ReadRecords> findByPartialBookname(@Param("book_name") String book_name);
+  @Modifying
+  @Query(value="select * from readrecords" + "where author like :author",nativeQuery = true)
+  Optional<ReadRecords> findByPartialAuthor(@Param("author") String author);
+  @Modifying
+  @Query(value="select * from readrecords" + "where book_name = :book_name and author = :author",nativeQuery = true)
+  Optional<ReadRecords> findByBooknameAndAuthor(@Param("book_name") String book_name, @Param("author") String author);
+  @Modifying
+  @Query(value="select * from readrecords" + "where book_name = :book_name and author like :author",nativeQuery = true)
+  Optional<ReadRecords> findByBooknameAndPartialAuthor(@Param("book_name") String book_name, @Param("author") String author);
+  @Modifying
+  @Query(value="select * from readrecords" + "where book_name like :book_name and author = :author",nativeQuery = true)
+  Optional<ReadRecords> findByPartialBooknameAndAuthor(@Param("book_name") String book_name, @Param("author") String author);
+  @Modifying
+  @Query(value="select * from readrecords" + "where book_name like :book_name and author like :author",nativeQuery = true)
+  Optional<ReadRecords> findByPartialBooknameAndPartialAuthor(@Param("book_name") String book_name, @Param("author") String author);
   // ISBNをカラムに追加したら実装するようにする
   // @Query("select * from readrecords where ISBN = :ISBN")
   // ptional<ReadRecords>  findByISBN(String ISBN);
