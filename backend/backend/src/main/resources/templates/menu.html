@@ -87,11 +87,9 @@
 
 <div class="container">
     <div class="buttons_red">
-        <!-- <button class="logout" onclick="location.href='user_login.html'">ログアウト</button> -->
-        <!-- ログアウト処理は要実装。(セッションをcookieで管理するなら、サーバー側でセッションを破棄する的なイメージ) -->
         <div th:if="${#authorization.expression('isAuthenticated()')}">
             <form th:action="@{/logout}" method="post">
-                <button class="logout-button">
+                <button class="logout">
                     ログアウト
                 </button>
             </form>
