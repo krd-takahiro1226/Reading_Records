@@ -30,6 +30,6 @@ public class UserLoginController {
       return "redirect:/menu";
     }
     else
-      return "redirect:/login_error";
+      return "redirect:/login?error=true";
   }
 }

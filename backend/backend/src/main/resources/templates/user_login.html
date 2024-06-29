@@ -60,6 +60,9 @@
         <div class="buttons">
             <button type="submit" formmethod="post">ログイン</button>
         </div>
+        <div>
+            <p th:if="${param.error}">パスワードまたはユーザー名が違います</p>
+        </div>
     </form>
     <br>
     <p style="text-align: left">新規登録は<a href="https://www.google.co.jp">こちら</a></p>
