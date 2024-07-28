@@ -7,13 +7,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import jakarta.persistence.Entity;
 import lombok.Data;
 
 @XmlRootElement(name = "SearchRetrieveResponse")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Data
-@Entity
 // APIレスポンス用のEntity(第一階層)
 public class SearchRetrieveResponse {
   @XmlElement(name = "version")

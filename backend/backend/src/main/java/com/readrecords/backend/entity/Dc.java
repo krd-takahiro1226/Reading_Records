@@ -5,11 +5,9 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import jakarta.persistence.Entity;
 import lombok.Data;
 @XmlRootElement(name = "srw_dc:dc")
 @Data
-@Entity
 // APIレスポンス用のEntity
 public class Dc {
   @XmlElement(name = "dc:title")
