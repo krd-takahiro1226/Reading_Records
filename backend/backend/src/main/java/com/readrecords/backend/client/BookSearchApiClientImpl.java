@@ -10,12 +10,18 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringJoiner;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.readrecords.backend.entity.SearchRetrieveResponse;
+import com.readrecords.backend.service.XmlParser;
 
 @Service
 public class BookSearchApiClientImpl implements BookSearchApiClient {
+  @Autowired XmlParser xmlParser;
   @Override
-  public String getBookSearch(String title, String creator, String isbn) throws Exception {
+  public SearchRetrieveResponse getBookSearch(String title, String creator, String isbn) throws Exception {
     String requestPath = "https://ndlsearch.ndl.go.jp/api/sru?operation=searchRetrieve";
     URL requestURL = null;
     try {
@@ -75,6 +81,6 @@ public class BookSearchApiClientImpl implements BookSearchApiClient {
     response.append(output);
     }
     conn.disconnect();
-    return response.toString();
+    return xmlParser.parse(response.toString());
 }
 }
