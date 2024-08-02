@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SearchResults</title>
+</head>
+<body>
+    <h1>Records</h1>
+    <div th:if="${response != null}">
+        <div th:each="res : ${response}">
+            <div th:each="record : ${res.records}">
+                <h2 th:text="${record.recordData.dc.title}">Title</h2>
+                <p th:text="${record.recordData.dc.creator}">Creator</p>
+                <ul>
+                    <li th:each="subject : ${record.recordData.dc.subjects}" th:text="${subject}">Subject</li>
+                </ul>
+                <p th:text="${record.recordData.dc.language}">Language</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
