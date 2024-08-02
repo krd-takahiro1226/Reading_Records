@@ -1,21 +1,21 @@
 package com.readrecords.backend.entity;
 
+import lombok.Data;
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import lombok.Data;
-@XmlRootElement(name = "srw_dc:dc")
+@XmlAccessorType(XmlAccessType.FIELD)
 @Data
-// APIレスポンス用のEntity
 public class Dc {
-  @XmlElement(name = "dc:title")
-  private String title;
-  @XmlElement(name = "dc:creator")
-  private String creator;
-  @XmlElement(name = "dc:subject")
-  private List<String> subjects;
-  @XmlElement(name = "dc:language")
-  private String language;
+    @XmlElement(name = "dc:title", namespace = "http://www.loc.gov/zing/srw/")
+    private String title;
+
+    @XmlElement(name = "dc:creator", namespace = "http://www.loc.gov/zing/srw/")
+    private String creator;
+
+    @XmlElement(name = "dc:subject", namespace = "http://www.loc.gov/zing/srw/")
+    private List<String> subjects;
+
+    @XmlElement(name = "dc:language", namespace = "http://www.loc.gov/zing/srw/")
+    private String language;
 }

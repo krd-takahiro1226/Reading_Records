@@ -1,25 +1,23 @@
 package com.readrecords.backend.entity;
 
+import lombok.Data;
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import lombok.Data;
-
-@XmlRootElement(name = "SearchRetrieveResponse")
+@XmlRootElement(name = "searchRetrieveResponse", namespace = "http://www.loc.gov/zing/srw/")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Data
-// APIレスポンス用のEntity(第一階層)
 public class SearchRetrieveResponse {
-  @XmlElement(name = "version")
-  private String version;
-  @XmlElement(name = "numberOfRecords")
-  private int numberOfRecords;
-  @XmlElement(name = "nextRecordPosition")
-  private int nextRecordPosition;
-  @XmlElement(name = "records")
-  private List<SearchBooksResponseRecords> records;
+    @XmlElement(name = "version", namespace = "http://www.loc.gov/zing/srw/")
+    private String version;
+
+    @XmlElement(name = "numberOfRecords", namespace = "http://www.loc.gov/zing/srw/")
+    private int numberOfRecords;
+
+    @XmlElement(name = "nextRecordPosition", namespace = "http://www.loc.gov/zing/srw/")
+    private int nextRecordPosition;
+
+    @XmlElementWrapper(name = "records", namespace = "http://www.loc.gov/zing/srw/")
+    @XmlElement(name = "record", namespace = "http://www.loc.gov/zing/srw/")
+    private List<SearchBooksResponseRecords> records;
 }

@@ -1,13 +1,11 @@
 package com.readrecords.backend.entity;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import lombok.Data;
+import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name = "recordData")
+@XmlAccessorType(XmlAccessType.FIELD)
 @Data
 public class SearchBooksResponseRecordsData {
-  @XmlElement(name = "srw_dc:dc")
-  private Dc dc;
+    @XmlElement(name = "srw_dc:dc", namespace = "http://www.loc.gov/zing/srw/")
+    private Dc dc;
 }

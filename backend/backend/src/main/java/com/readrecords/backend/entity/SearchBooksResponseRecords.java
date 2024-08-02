@@ -1,20 +1,20 @@
 package com.readrecords.backend.entity;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import lombok.Data;
+import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name = "records")
+@XmlAccessorType(XmlAccessType.FIELD)
 @Data
-// APIレスポンス用のEntity(第二階層)
 public class SearchBooksResponseRecords {
-  @XmlElement(name = "recordSchema")
-  private String recordSchema;
-  @XmlElement(name = "recordPacking")
-  private String recordPacking;
-  @XmlElement(name = "recordData")
-  private SearchBooksResponseRecordsData recordData;
-  @XmlElement(name = "recordPosition")
-  private int recordPosition;
+    @XmlElement(name = "recordSchema", namespace = "http://www.loc.gov/zing/srw/")
+    private String recordSchema;
+
+    @XmlElement(name = "recordPacking", namespace = "http://www.loc.gov/zing/srw/")
+    private String recordPacking;
+
+    @XmlElement(name = "recordData", namespace = "http://www.loc.gov/zing/srw/")
+    private SearchBooksResponseRecordsData recordData;
+
+    @XmlElement(name = "recordPosition", namespace = "http://www.loc.gov/zing/srw/")
+    private int recordPosition;
 }
