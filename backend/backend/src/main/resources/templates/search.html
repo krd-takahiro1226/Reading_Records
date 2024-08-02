@@ -34,11 +34,12 @@
         function submitForm() {
             const titleSearchAndOr = document.getElementById("titleActionAndOr").value;
             // const titleSearchAndOr = document.getElementById("titleActionAndOr").innerHTML;
-            const autorSearchAndOr = document.getElementById("authorActionAndOr").value;
+            const creator = document.getElementById("creatorActionAndOr").value;
             const titleSearchPartPerf = document.getElementById("titleActionPartPerf").value;
-            const autorSearchPartPerf = document.getElementById("authorActionPartPerf").value;
+            const creatorSearchPartPerf = document.getElementById("creatorActionPartPerf").value;
             const form = document.getElementById("searchForm");
-            form.action = `/searchBooks/${titleSearchAndOr}/${autorSearchAndOr}/${titleSearchPartPerf}/${autorSearchPartPerf}`;
+            // form.action = `/searchBooks/${titleSearchAndOr}/${creatorSearchAndOr}/${titleSearchPartPerf}/${creatorSearchPartPerf}`;
+            form.action = `/searchBooks/sruSearch`;
             form.submit();
         }
     </script>
@@ -63,13 +64,13 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="author">著者名</label>
-            <input type="search" id="author" name="author">
-            <select id = "authorActionAndOr" name="authorSearchSelect">
+            <label for="creator">著者名</label>
+            <input type="search" id="creator" name="creator">
+            <select id = "creatorActionAndOr" name="creatorSearchSelect">
                 <option value="and">AND</option>
                 <option value="or">OR</option>
             </select>
-            <select id = "authorActionPartPerf" name="author-Partial-Perfect">
+            <select id = "creatorActionPartPerf" name="creator-Partial-Perfect">
                 <option value="partial">を含む</option>
                 <option value="perfect">と一致する</option>
             </select>
@@ -77,6 +78,14 @@
         <div class="form-group">
             <label for="isbn">ISBN</label>
             <input type="search" id="isbn" name="isbn">
+            <select id = "isbnActionAndOr" name="isbnSearchSelect">
+                <option value="and">AND</option>
+                <option value="or">OR</option>
+            </select>
+            <select id = "isbnActionPartPerf" name="isbn-Partial-Perfect">
+                <option value="partial">を含む</option>
+                <option value="perfect">と一致する</option>
+            </select>
         </div>
         <div class="buttons">
             <button type="button" onclick="submitForm()">検索</button>
