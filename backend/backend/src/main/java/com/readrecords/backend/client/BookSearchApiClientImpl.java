@@ -21,39 +21,41 @@ import com.readrecords.backend.service.XmlParser;
 public class BookSearchApiClientImpl implements BookSearchApiClient {
   @Autowired XmlParser xmlParser;
   @Override
-  public SearchRetrieveResponse getBookSearch(String title, String creator, String isbn) throws Exception {
-    String requestPath = "https://ndlsearch.ndl.go.jp/api/sru?operation=searchRetrieve";
+  public SearchRetrieveResponse getBookSearch(String title, String author, String publisherName, String isbn) throws Exception {
+    // ベースとなるリクエストURLの作成
+    String requestPath = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?";
+    String applicationId = "1002321977022357484";
+    String format = "xml";
+    requestPath += "applicationId=" + applicationId;
+    requestPath += "&format=" + format;
     URL requestURL = null;
+    // リクエストパラメータを追加したURLの作成
     try {
-    String titlequery = "title=\"" + title + "\"";
-    String creatorquery = "creator=\"" + creator + "\"";
-    String isbnquery = "isbn=\"" + isbn + "\"";
-    String query;
-    if (title != null && creator != null && isbn != null) {
-        query = titlequery + " AND " + creatorquery + " AND " + isbnquery;
-    } else if (title != null && creator != null) {
-        query = titlequery + " AND " + creatorquery;
-    } else if (title != null && isbn != null) {
-        query = titlequery + " AND " + isbnquery;
-    } else if (creator != null && isbn != null) {
-        query = creatorquery + " AND " + isbnquery;
-    } else if (title != null) {
-        query = titlequery;
-    } else if (creator != null) {
-        query = creatorquery;
-    } else if (isbn != null) {
-        query = isbnquery;
+    // UTF-8エンコード処理
+    String titleEncoding = URLEncoder.encode(title, "UTF-8");
+    String authorEncoding = URLEncoder.encode(author, "UTF-8");
+    String publisherNameEncoding = URLEncoder.encode(publisherName, "UTF-8");
+    String isbnEncoding = URLEncoder.encode(isbn, "UTF-8");
+    String titlequery = "&title=" + titleEncoding;
+    String authorquery = "&author=" + authorEncoding;
+    String publisherquery = "&publisherName=" + publisherNameEncoding;
+    String isbnquery = "&isbn=" + isbnEncoding;
+    String query = "";
+    if (title != null && !title.isEmpty()) {
+        query += titlequery;
+    }
+    if (author != null && !author.isEmpty()) {
+        query += authorquery;
+    }
+    if (publisherName != null && !publisherName.isEmpty()) {
+        query += publisherquery;
+    }
+    if (isbn != null && !isbn.isEmpty()) {
+        query += isbnquery;
     } else {
         throw new Exception("検索条件を入力してください");
     }
-    // UTF-8エンコード処理
-    String queryEncoding = URLEncoder.encode(query, "UTF-8").replace("+","%20");
-    Map<String, String> queryMap = new HashMap<String, String>();
-    queryMap.put("maximumRecords", "10");
-    queryMap.put("query", queryEncoding);
-    StringJoiner url = new StringJoiner("&");
-    url.add(requestPath);
-    queryMap.forEach((key, value) -> url.add(key + "=" + value));
+    String url = new String(requestPath + query);
     requestURL = URI.create(url.toString()).toURL();
       // エラーハンドリング
     } catch (UnsupportedEncodingException e) {
