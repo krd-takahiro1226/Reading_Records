@@ -54,39 +54,23 @@
         <div class="form-group">
             <label for="title">タイトル</label>
             <input type="search" id="title" name="title">
-            <select id = "titleActionAndOr" name="titleSearchSelect">
-                <option value="and">AND</option>
-                <option value="or">OR</option>
-            </select>
-            <select id = "titleActionPartPerf" name ="title-Partial-Perfect">
-                <option value="partial">を含む</option>
-                <option value="perfect">と一致する</option>
-            </select>
         </div>
         <div class="form-group">
-            <label for="creator">著者名</label>
-            <input type="search" id="creator" name="creator">
-            <select id = "creatorActionAndOr" name="creatorSearchSelect">
-                <option value="and">AND</option>
-                <option value="or">OR</option>
-            </select>
-            <select id = "creatorActionPartPerf" name="creator-Partial-Perfect">
-                <option value="partial">を含む</option>
-                <option value="perfect">と一致する</option>
-            </select>
+            <label for="author">著者名</label>
+            <input type="search" id="author" name="author">
+        </div>
+        <div class="form-group">
+            <label for="publisherName">出版社</label>
+            <input type="search" id="publisherName" name="publisherName">
         </div>
         <div class="form-group">
             <label for="isbn">ISBN</label>
             <input type="search" id="isbn" name="isbn">
-            <select id = "isbnActionAndOr" name="isbnSearchSelect">
-                <option value="and">AND</option>
-                <option value="or">OR</option>
-            </select>
-            <select id = "isbnActionPartPerf" name="isbn-Partial-Perfect">
-                <option value="partial">を含む</option>
-                <option value="perfect">と一致する</option>
-            </select>
         </div>
+        <select id = "searchCondition" name="searchCondition">
+            <option value="and">AND</option>
+            <option value="or">OR</option>
+        </select>
         <div class="buttons">
             <button type="button" onclick="submitForm()">検索</button>
             <!-- <button type="submit">検索</button> -->
