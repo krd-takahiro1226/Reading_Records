@@ -8,14 +8,14 @@ import javax.xml.bind.Unmarshaller;
 
 import org.springframework.stereotype.Service;
 
-import com.readrecords.backend.entity.SearchRetrieveResponse;
+import com.readrecords.backend.entity.SearchBooksResponse;
 
 @Service
 public class XmlParser {
-  public SearchRetrieveResponse parse(String xml) throws JAXBException{
-    JAXBContext jaxbContext = JAXBContext.newInstance(SearchRetrieveResponse.class);
+  public SearchBooksResponse parse(String xml) throws JAXBException{
+    JAXBContext jaxbContext = JAXBContext.newInstance(SearchBooksResponse.class);
     Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
     StringReader reader = new StringReader(xml);
-    return (SearchRetrieveResponse) unmarshaller.unmarshal(reader);
+    return (SearchBooksResponse) unmarshaller.unmarshal(reader);
   }
 }
