@@ -7,21 +7,18 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringJoiner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.readrecords.backend.entity.SearchRetrieveResponse;
+import com.readrecords.backend.entity.SearchBooksResponse;
 import com.readrecords.backend.service.XmlParser;
 
 @Service
 public class BookSearchApiClientImpl implements BookSearchApiClient {
   @Autowired XmlParser xmlParser;
   @Override
-  public SearchRetrieveResponse getBookSearch(String title, String author, String publisherName, String isbn) throws Exception {
+  public SearchBooksResponse getBookSearch(String title, String author, String publisherName, String isbn) throws Exception {
     // ベースとなるリクエストURLの作成
     String requestPath = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?";
     String applicationId = "1002321977022357484";
@@ -52,7 +49,8 @@ public class BookSearchApiClientImpl implements BookSearchApiClient {
     }
     if (isbn != null && !isbn.isEmpty()) {
         query += isbnquery;
-    } else {
+    } 
+    if (query == null || query.isEmpty()) {
         throw new Exception("検索条件を入力してください");
     }
     String url = new String(requestPath + query);
