@@ -32,13 +32,7 @@
     </style>
     <script>
         function submitForm() {
-            const titleSearchAndOr = document.getElementById("titleActionAndOr").value;
-            // const titleSearchAndOr = document.getElementById("titleActionAndOr").innerHTML;
-            const creator = document.getElementById("creatorActionAndOr").value;
-            const titleSearchPartPerf = document.getElementById("titleActionPartPerf").value;
-            const creatorSearchPartPerf = document.getElementById("creatorActionPartPerf").value;
             const form = document.getElementById("searchForm");
-            // form.action = `/searchBooks/${titleSearchAndOr}/${creatorSearchAndOr}/${titleSearchPartPerf}/${creatorSearchPartPerf}`;
             form.action = `/searchBooks/sruSearch`;
             form.submit();
         }

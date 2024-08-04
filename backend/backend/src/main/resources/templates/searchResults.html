@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>SearchResults</title>
+    <meta charset="UTF-8">
+    <title>検索結果</title>
 </head>
 <body>
-    <h1>Records</h1>
-    <div th:if="${response != null}">
-        <div th:each="res : ${response}">
-            <div th:each="record : ${res.records}">
-                <h2 th:text="${record.recordData.dc.title}">Title</h2>
-                <p th:text="${record.recordData.dc.creator}">Creator</p>
-                <ul>
-                    <li th:each="subject : ${record.recordData.dc.subjects}" th:text="${subject}">Subject</li>
-                </ul>
-                <p th:text="${record.recordData.dc.language}">Language</p>
-            </div>
-        </div>
+    <h1>検索結果</h1>
+    <div th:if="${response.items != null}">
+        <ul>
+            <li th:each="item : ${response.items}">
+                <h2 th:text="${item.title}"></h2>
+                <p>著者: <span th:text="${item.author}"></span></p>
+                <p>著者カナ: <span th:text="${item.authorKana}"></span></p>
+                <p>ISBN: <span th:text="${item.isbn}"></span></p>
+                <p>出版社: <span th:text="${item.publisherName}"></span></p>
+                <p>発売日: <span th:text="${item.salesDate}"></span></p>
+                <p>サイズ: <span th:text="${item.size}"></span></p>
+                <p>サブタイトル: <span th:text="${item.subTitle}"></span></p>
+                <p>サブタイトルカナ: <span th:text="${item.subTitleKana}"></span></p>
+                <img th:src="${item.smallImageUrl}" alt="書籍画像">
+            </li>
+        </ul>
+    </div>
+    <div th:if="${response.items == null}">
+        <p>書籍が見つかりませんでした。</p>
     </div>
 </body>
 </html>
