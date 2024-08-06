@@ -1,4 +1,4 @@
-package com.readrecords.backend.entity;
+package com.readrecords.backend.dto;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

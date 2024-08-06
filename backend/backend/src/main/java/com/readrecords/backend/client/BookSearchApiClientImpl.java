@@ -11,7 +11,7 @@ import java.net.URLEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.readrecords.backend.entity.SearchBooksResponse;
+import com.readrecords.backend.dto.SearchBooksResponse;
 import com.readrecords.backend.service.XmlParser;
 
 @Service

@@ -8,7 +8,7 @@ import javax.xml.bind.Unmarshaller;
 
 import org.springframework.stereotype.Service;
 
-import com.readrecords.backend.entity.SearchBooksResponse;
+import com.readrecords.backend.dto.SearchBooksResponse;
 
 @Service
 public class XmlParser {
