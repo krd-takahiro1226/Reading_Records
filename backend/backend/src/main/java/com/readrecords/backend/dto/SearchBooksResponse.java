@@ -1,4 +1,4 @@
-package com.readrecords.backend.entity;
+package com.readrecords.backend.dto;
 
 import java.util.List;
 

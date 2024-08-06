@@ -2,7 +2,7 @@ package com.readrecords.backend.client;
 
 import org.springframework.stereotype.Service;
 
-import com.readrecords.backend.entity.SearchBooksResponse;
+import com.readrecords.backend.dto.SearchBooksResponse;
 
 @Service
 public interface BookSearchApiClient {

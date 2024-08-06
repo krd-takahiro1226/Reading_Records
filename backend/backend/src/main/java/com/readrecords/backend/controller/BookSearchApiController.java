@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.readrecords.backend.client.BookSearchApiClient;
-import com.readrecords.backend.entity.SearchBooksResponse;
+import com.readrecords.backend.dto.SearchBooksResponse;
 import com.readrecords.backend.entity.SearchRetrieveResponse;
 
 @Controller
