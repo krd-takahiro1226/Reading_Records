@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー登録</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            height: 100%;
+            margin: 10px auto;
+        }
+        .container {
+            width: 60%;
+        }
+
+        .buttons {
+            text-align: center;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .buttons button.clear {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>ユーザー登録</h1>
+    <p>検索するキーワードを入力してください。</p>
+    <form action="/registerUserPost" method="POST">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <div class="form-group">
+            <label for="username">タイトル</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="text" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">パスワード</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm_password">確認用パスワード</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <button type="button" onclick="submitForm()">登録</button>
+        <button type="reset" class="clear">クリア</button>
+    </form>
+</div>
+</body>
+</html>
