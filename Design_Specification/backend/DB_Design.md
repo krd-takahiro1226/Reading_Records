@@ -1,13 +1,11 @@
 # DB設計
-## 読書管理テーブル(reading_records)
-- book_id
+## 読書管理テーブル(read_records)
+- record_id
   - Int
   - Not Null
   - 主キー
-- 書籍名(book_name)
-  - varchar(30)
-- 著者(author)
-  - varchar(30)
+- ISBN
+  - varchar(13)
   - Not Null
 - ユーザid(user_id)
   - Int
@@ -18,21 +16,36 @@
   - 直近読んだ日
 - 読んだ回数(read_count)
   - Int
-- ジャンル(genre)
-  - varchar(20)
-  - 選択形式？自由入力
-  - 選択
-    - 一覧を検討する必要あり
 - 優先度(priority)
   - Int
-  - 読んだことない本についての想定だが、読んだことある本についても登録できるようにする
-  - デフォルトは値なし
-  - 登録された値が小さいほど優先度高い
-    - 新しく優先度登録があるとシフトする必要あり
+    - 1
+      - 今読みたい
+    - 2
+      - 今後読みたい
+    - 3
+      - すでに読んだ(備忘として管理)
 - メモ(memo)
   - varchar(100)
   - 追加できるような形がいい
-    - どうやるんだそれ...
+
+## 書籍管理テーブル(book_records)
+- ISBN
+  - varchar(13)
+  - Not Null
+  - 主キー
+- 書籍名
+  - varchar(30)
+  - Not Null
+- 著者
+  - varchar(30)
+  - Not Null
+- ジャンル
+  - varchar(20)
+- 出版年
+  - DATE
+- 出版社
+  - varchar(100)
+
 ## ユーザ管理テーブル(users)
 - ユーザid(user_id)
   - Int
