@@ -43,6 +43,8 @@ public class SecurityConfig {
       .requestMatchers("/").permitAll()
       // "/login"は全ユーザがアクセス可能
       .requestMatchers("/login").permitAll()
+      // "/userRegistration"は全ユーザがアクセス可能
+      .requestMatchers("/userRegistration").permitAll()
       // generalはgeneralユーザがアクセス可能
       .requestMatchers("/general").hasRole("general")
       // adminはadminユーザがアクセス可能
