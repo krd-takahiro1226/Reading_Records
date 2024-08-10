@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.readrecords.backend.client.BookSearchApiClient;
 import com.readrecords.backend.entity.SearchBooksResponse;
-import com.readrecords.backend.entity.SearchRetrieveResponse;
 
 @Controller
 @RequestMapping(value = "/searchBooks/sruSearch",method = RequestMethod.POST)
