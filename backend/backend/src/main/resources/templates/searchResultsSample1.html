@@ -1,260 +1,101 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>書籍検索結果</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <style>
-        body {
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            width: 90%;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>書籍検索結果</title>
+        <link rel="stylesheet" href="./css/styles.css">
+        <style>
+            body {
+                height: 100%;
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                width: 90%;
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                text-align: center;
+                overflow-x: auto;
+            }
 
-        .buttons {
-            margin-top: 20px;
-        }
+            .buttons {
+                margin-top: 20px;
+            }
 
-        .buttons button {
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 4px;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-            width: 40%;
-        }
+            .buttons button {
+                padding: 10px 20px;
+                margin: 5px;
+                border: none;
+                border-radius: 4px;
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
+                width: 40%;
+                max-width: 200px;
+            }
 
-        .buttons button:hover {
-            background-color: #45a049;
-        }
+            .buttons button:hover {
+                background-color: #45a049;
+            }
 
-        .buttons .cancel-button {
-            background-color: #f44336; /* キャンセルボタンの背景色を赤に設定 */
-            width: 40%; /* キャンセルボタンの幅を決定ボタンと同じに設定 */
-        }
+            .buttons .cancel-button {
+                background-color: #f44336; /* キャンセルボタンの背景色を赤に設定 */
+                width: 40%; /* キャンセルボタンの幅を決定ボタンと同じに設定 */
+                max-width: 200px;
+            }
 
-        .buttons .cancel-button:hover {
-            background-color: #d32f2f; /* キャンセルボタンのホバー時の背景色を変更 */
-        }
-
-
-
-
-        table.book-list {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table.book-list th, table.book-list td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-
-        table.book-list th {
-            background-color: #f2f2f2;
-        }
-/*
-        table.book-list tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-*/
-        table.book-list tbody tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .reserve-button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
+            .buttons .cancel-button:hover {
+                background-color: #d32f2f; /* キャンセルボタンのホバー時の背景色を変更 */
+            }
 
 
 
 
+            table.book-list {
+                width: 100%;
+                min-width: 800px;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
 
+            table.book-list th, table.book-list td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+            }
 
+            table.book-list th {
+                background-color: #f2f2f2;
+            }
+    /*
+            table.book-list tbody tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+    */
+            table.book-list tbody tr:hover {
+                background-color: #f1f1f1;
+            }
 
-        /* ポップアップウィンドウのスタイル */
-        .popup {
-            display: none; /* デフォルトで非表示 */
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
+            .reserve-button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 8px 10px;
+                min-width: 50px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
 
-        .popup-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            /*width: 70%;*/
-            width: 420px;         /* ポップアップの幅を指定 */
-            max-width: 800px;   /* 最大幅を800pxに制限 */
-            border: 1px solid #888;
-            
-            text-align: center;
-        }
-
-
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .option-button {
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .option-button:hover {
-            background-color: #45a049;
-        }
-
-
-
-
-        /* ラジオボタンのスタイル */
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .radio-group label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            cursor: pointer; /* カーソルをポインターにする */
-        }
-
-
-
-        /* ラジオボタンのスタイル */
-        .radio-group .radio-label {
-            display: flex;
-            align-items: center;
-            margin-left: 15px;
-            margin-right: 15px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease; /* 背景色の変化をアニメーション化 */
-        }
-
-        .radio-group .radio-label:hover {
-            background-color: #f0f0f0; /* ホバー時の背景色を変更 */
-        }
-
-        .radio-group input[type="radio"] {
-            margin-right: 10px;
-        }
-
-
-
-    </style>
-
-</head>
-<body>
-    
-
-
-
-
-    <div class="container">
-        <h1>書籍検索結果</h1>
-        <table class="book-list">
-            
-            <br>
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>画像</th>
-                    <th>タイトル</th>
-                    <th>著者</th>
-                    <th>ジャンル</th>
-                    <th>出版社</th>
-                    <th>出版年</th>
-                    
-                    <th>登録</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>pic</td>
-                    <td>中学生・高校生が弾きたい超人気アニメ・ボカロ曲ベスト</td>
-                    <td>シンコーミュージック・エンタテイメント</td>
-                    <td>ジャンル</td>
-                    <td>A社</td>
-                    <td>2022.1</td>
-                    
-                    <td><button class="reserve-button" onclick="showPopup()">登録</button></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>pic</td>
-                    <td>Sakura 2</td>
-                    <td>story Yoru Sumino</td>
-                    <td>ジャンル</td>
-                    <td>Garlseen Manga</td>
-                    <td>2019</td>
-                    
-                    <td><button class="reserve-button">登録</button></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>pic</td>
-                    <td>君の膵臓をたべたい</td>
-                    <td>住野よる</td>
-                    <td>ジャンル</td>
-                    <td>双葉社</td>
-                    <td>2018.7</td>
-                    
-                    <td><button class="reserve-button">登録</button></td>
-                </tr>
-                <!-- 追加の行をここに追加 -->
-            </tbody>
-        </table>
+            .reserve-button:hover {
+                background-color: #45a049;
+            }
 
 
 
@@ -262,46 +103,235 @@
 
 
 
-    <!-- ポップアップのHTML -->
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close">&times;</span>
-            <h3>リストに新規登録します</h3>
-            <br>
-            <p>以下から選択してください。</p>
-            
+            /* ポップアップウィンドウのスタイル */
+            .popup {
+                display: none; /* デフォルトで非表示 */
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
 
-            <form id="popup-form">
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="option" value="1">
-                        すぐに読みたい本として登録する
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="option" value="2">
-                        今後読みたい本として登録する
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="option" value="3">
-                        すでに読んだことのある本として登録する
-                    </label>
-                </div>
-                <div class="buttons">
-                    <button type="button" onclick="submitChoice()">決定</button>
-                    <button type="button" class="cancel-button" onclick="closePopup()">キャンセル</button>
-                </div>
+            .popup-content {
+                background-color: #fefefe;
+                margin: 15% auto;
+                padding: 20px;
+                /*width: 70%;*/
+                width: 420px;         /* ポップアップの幅を指定 */
+                max-width: 800px;   /* 最大幅を800pxに制限 */
+                border: 1px solid #888;
                 
-            </form>
+                text-align: center;
+            }
+
+
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .option-button {
+                margin: 10px;
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+
+            .option-button:hover {
+                background-color: #45a049;
+            }
+
+
+
+
+            /* ラジオボタンのスタイル */
+            .radio-group {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .radio-group label {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                cursor: pointer; /* カーソルをポインターにする */
+            }
+
+
+
+            /* ラジオボタンのスタイル */
+            .radio-group .radio-label {
+                display: flex;
+                align-items: center;
+                margin-left: 15px;
+                margin-right: 15px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease; /* 背景色の変化をアニメーション化 */
+                min-width: 200px;
+            }
+
+            .radio-group .radio-label:hover {
+                background-color: #f0f0f0; /* ホバー時の背景色を変更 */
+            }
+
+            .radio-group input[type="radio"] {
+                margin-right: 10px;
+            }
+
+
+
+        </style>
+    </head>
+
+    <body>
+    
+        <div class="container">
+            <h1>書籍検索結果</h1>
+
+            <!-- ページ内表示件数指定プルダウン -->
+            <label for="itemsPerPage">表示件数:</label>
+            <select id="itemsPerPage">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+
+
+            <!-- テーブル -->
+            <table id="dataTable" class="book-list">
+        
+                <br>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>画像</th>
+                        <th>タイトル</th>
+                        <th>著者</th>
+                        <th>ジャンル</th>
+                        <th>出版社</th>
+                        <th>出版年</th>
+                        <th>登録</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <!--
+                    <tr>
+                        <td>1</td>
+                        <td>pic</td>
+                        <td>中学生・高校生が弾きたい超人気アニメ・ボカロ曲ベスト</td>
+                        <td>シンコーミュージック・エンタテイメント</td>
+                        <td>ジャンル</td>
+                        <td>A社</td>
+                        <td>2022.1</td>
+                        
+                        <td><button class="reserve-button" onclick="showPopup()">登録</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>pic</td>
+                        <td>Sakura 2</td>
+                        <td>story Yoru Sumino</td>
+                        <td>ジャンル</td>
+                        <td>Garlseen Manga</td>
+                        <td>2019</td>
+                        
+                        <td><button class="reserve-button" onclick="showPopup()">登録</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>pic</td>
+                        <td>君の膵臓をたべたい</td>
+                        <td>住野よる</td>
+                        <td>ジャンル</td>
+                        <td>双葉社</td>
+                        <td>2018.7</td>
+                        
+                        <td><button class="reserve-button" onclick="showPopup()">登録</button></td>
+                    </tr>
+                    -->
+
+
+
+                    
+                    
+                </tbody>
+            </table>
+
+        
+            <div class="buttons">
+                <button class="button" onclick="location.href='/searchBooks'">再検索</button>
+            </div>
+        
         </div>
-    </div>
-
-    <script src="script.js"></script>
 
 
-</div>
 
 
-</body>
+
+        <!-- ポップアップのHTML -->
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <h3>リストに新規登録します</h3>
+                <br>
+                <p>以下から選択してください。</p>
+                
+
+                <form id="popup-form">
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="option" value="1">
+                            すぐに読みたい本として登録する
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="option" value="2">
+                            今後読みたい本として登録する
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="option" value="3">
+                            すでに読んだことのある本として登録する
+                        </label>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="submitChoice()">決定</button>
+                        <button type="button" class="cancel-button" onclick="closePopup()">キャンセル</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+
+
+
+
+
+    </body>
 </html>
 
 
@@ -354,4 +384,85 @@
 
 
     
+</script>
+
+
+<script>
+    // 仮のデータ
+const data = [
+    { no: 1, image: 'pic', title: '中学生・高校生が弾きたい超人気アニメ・ボカロ曲ベスト', author: 'シンコーミュージック・エンタテイメント', genre: 'ジャンル', publisher: 'A社', year: '2022.1' },
+    { no: 2, image: 'pic', title: 'Sakura 2', author: 'story Yoru Sumino', genre: 'ジャンル', publisher: 'Garlseen Manga', year: '2019' },
+    { no: 3, image: 'pic', title: '君の膵臓をたべたい', author: '住野よる', genre: 'ジャンル', publisher: '双葉社', year: '2018.7' },
+    { no: 4, image: 'pic', title: 'SampleBook2', author: 'SampleAuthor2', genre: 'ジャンル', publisher: 'A社', year: '2018.7' },
+    { no: 5, image: 'pic', title: 'SampleBook3', author: 'SampleAuthor3', genre: 'ジャンル', publisher: 'B社', year: '2018.7' },
+    { no: 6, image: 'pic', title: 'SampleBook4', author: 'SampleAuthor4', genre: 'ジャンル', publisher: 'C社', year: '2018.7' },
+    { no: 7, image: 'pic', title: 'SampleBook5', author: 'SampleAuthor5', genre: 'ジャンル', publisher: 'D社', year: '2018.7' },
+    { no: 8, image: 'pic', title: 'SampleBook6', author: 'SampleAuthor6', genre: 'ジャンル', publisher: 'E社', year: '2018.7' },
+    { no: 9, image: 'pic', title: 'SampleBook7', author: 'SampleAuthor7', genre: 'ジャンル', publisher: 'F社', year: '2018.7' },
+    { no: 10, image: 'pic', title: 'SampleBook8', author: 'SampleAuthor8', genre: 'ジャンル', publisher: 'G社', year: '2018.7' },
+    { no: 11, image: 'pic', title: 'SampleBook9', author: 'SampleAuthor9', genre: 'ジャンル', publisher: 'H社', year: '2018.7' },
+    { no: 12, image: 'pic', title: 'SampleBook10', author: 'SampleAuthor10', genre: 'ジャンル', publisher: 'I社', year: '2018.7' },
+    { no: 13, image: 'pic', title: 'SampleBook11', author: 'SampleAuthor11', genre: 'ジャンル', publisher: 'J社', year: '2018.7' },
+    { no: 14, image: 'pic', title: 'SampleBook12', author: 'SampleAuthor12', genre: 'ジャンル', publisher: 'K社', year: '2018.7' },
+    // さらにデータを追加できます...
+];
+
+document.getElementById('itemsPerPage').addEventListener('change', function() {
+    const selectedValue = parseInt(this.value, 10);
+    updateTable(selectedValue);
+});
+
+function updateTable(itemsPerPage) {
+    const tableBody = document.querySelector('#dataTable tbody');
+    tableBody.innerHTML = ''; // テーブルの中身をクリア
+
+    for (let i = 0; i < Math.min(itemsPerPage, data.length); i++) {
+        const row = tableBody.insertRow();
+        
+        // No
+        const cellNo = row.insertCell(0);
+        cellNo.textContent = data[i].no;
+
+        // 画像
+        const cellImage = row.insertCell(1);
+        cellImage.textContent = data[i].image;
+
+        // タイトル
+        const cellTitle = row.insertCell(2);
+        cellTitle.textContent = data[i].title;
+
+        // 著者
+        const cellAuthor = row.insertCell(3);
+        cellAuthor.textContent = data[i].author;
+
+        // ジャンル
+        const cellGenre = row.insertCell(4);
+        cellGenre.textContent = data[i].genre;
+
+        // 出版社
+        const cellPublisher = row.insertCell(5);
+        cellPublisher.textContent = data[i].publisher;
+
+        // 出版年
+        const cellYear = row.insertCell(6);
+        cellYear.textContent = data[i].year;
+
+        // 登録ボタン
+        const cellButton = row.insertCell(7);
+        const button = document.createElement('button');
+        button.className = 'reserve-button';
+        button.textContent = '登録';
+        button.onclick = function() {
+            showPopup(); // 登録ボタンがクリックされた時の動作
+        };
+        cellButton.appendChild(button);
+    }
+}
+
+function showPopup() {
+    alert('登録ボタンがクリックされました');
+}
+
+// 初期表示のために呼び出す
+updateTable(10);
 </script>
