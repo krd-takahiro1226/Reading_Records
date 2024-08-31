@@ -14,4 +14,3 @@ public interface  UserRegistrationRepository extends CrudRepository<UserLogin, I
   @Query(value = "insert into users " + "(username, email, password) values " + "(:username, :email, :hashPassword)", nativeQuery = true)
   void insertUserRecords(@Param("username") String username, @Param("email") String email, @Param("hashPassword") String password);
 }
-// insert into users (username, email, password) values ("aa", "aaa@bb.cc", "hugahuga");
