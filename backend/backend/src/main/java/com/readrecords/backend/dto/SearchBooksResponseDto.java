@@ -13,13 +13,10 @@ import lombok.Data;
 @XmlRootElement(name = "root")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Data
-public class SearchBooksResponse {
-  // @XmlElementWrapper(name = "genreInformations")
-  // @XmlElement(name = "genreInformation")
-  // private List<SearchBooksGenreInformation> genreInformation;
+public class SearchBooksResponseDto {
   @XmlElementWrapper(name = "Items")
   @XmlElement(name = "Item")
-  private List<SearchBooksItem> items;
+  private List<SearchBooksItemDto> items;
   @XmlElement(name = "carrier")
   private int carrier;
   @XmlElement(name = "count")

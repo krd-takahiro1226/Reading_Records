@@ -7,6 +7,6 @@ import lombok.Data;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @Data
-public class SearchBooksGenreInformation {
+public class SearchBooksGenreInformationDto {
     // 現在のところフィールドがないので、必要になったら追加してください
 }
