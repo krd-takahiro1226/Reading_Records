@@ -3,15 +3,12 @@ package com.readrecords.backend.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.readrecords.backend.entity.ReadRecords;
 import com.readrecords.backend.repository.ReadRecordsRepository;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class BackendServiceImpl implements BackendService{
