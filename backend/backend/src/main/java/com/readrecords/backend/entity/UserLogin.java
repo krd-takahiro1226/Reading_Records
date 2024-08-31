@@ -13,7 +13,7 @@ import lombok.Data;
 public class UserLogin implements Serializable {
   private static final long serialVersionUID = 1L;
   @Id
-  private Integer user_id;
+  private String user_id;
   private String username;
   private String email;
   private String password;

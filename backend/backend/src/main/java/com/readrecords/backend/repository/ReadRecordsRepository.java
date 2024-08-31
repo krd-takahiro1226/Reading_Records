@@ -16,7 +16,7 @@ public interface ReadRecordsRepository extends CrudRepository<ReadRecords, Integ
   @Modifying
   @Query(value="INSERT INTO readrecords" + "VALUES(:ISBN, :user_id, :start_date, :end_date, :read_count, :priority, :memo)",nativeQuery = true)
   void createReadRecords(@Param("ISBN") String ISBN, 
-                        @Param("user_id") Integer user_id, 
+                        @Param("user_id") String user_id, 
                         @Param("start_date") Date start_date, 
                         @Param("end_date") Date end_date, 
                         @Param("read_count") Integer read_count, 

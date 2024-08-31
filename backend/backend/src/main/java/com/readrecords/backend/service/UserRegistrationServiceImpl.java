@@ -1,5 +1,7 @@
 package com.readrecords.backend.service;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,8 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
   @Override
   public void userRegistration(String username, String email, String password, String confirmPassword) {
     String hashPassword = passwordEncoder.encode(password);
-    userRegistrationRepository.insertUserRecords(username, email, hashPassword);
+    String userId = UUID.randomUUID().toString();
+    userRegistrationRepository.insertUserRecords(userId, username, email, hashPassword);
   }
   @Override
   public boolean checkPassword(String password, String confirmPassword) {
