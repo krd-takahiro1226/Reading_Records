@@ -23,15 +23,6 @@ public class UserLoginController {
   public String showLoginWindow() {
     return "user_login";
   }
-  @RequestMapping(value = "/login", method = RequestMethod.POST)
-  public String executeLogin(String username, String password, Model model) {
-    String collectPassword = userLoginRepostoty.findPasswordByUsername(username);
-    if (passwordEncoder.matches(password, collectPassword)) {
-      return "redirect:/menu";
-    }
-    else
-      return "redirect:/login?error=true";
-  }
   @RequestMapping("/userRegistration")
   @GetMapping
   public String showRegisterWindow(){
