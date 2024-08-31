@@ -21,7 +21,7 @@ public class UserLoginController {
   UserLoginRepostoty userLoginRepostoty;
   @RequestMapping(value = "/login", method = RequestMethod.GET)
   public String showLoginWindow() {
-    return "user_login";
+    return "userLogin";
   }
   @RequestMapping("/userRegistration")
   @GetMapping
