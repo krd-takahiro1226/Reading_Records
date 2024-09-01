@@ -9,9 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.readrecords.backend.entity.UserLogin;
 
 @Repository
-public interface  UserRegistrationRepository extends CrudRepository<UserLogin, Integer> {
+public interface  UserRegistrationRepository extends CrudRepository<UserLogin, String> {
   @Modifying
-  @Query(value = "insert into users " + "(username, email, password) values " + "(:username, :email, :hashPassword)", nativeQuery = true)
-  void insertUserRecords(@Param("username") String username, @Param("email") String email, @Param("hashPassword") String password);
+  @Query(value = "insert into users " + "(user_id, username, email, password) values " + "(:user_id, :username, :email, :hashPassword)", nativeQuery = true)
+  void insertUserRecords(@Param("user_id")String user_id, @Param("username") String username, @Param("email") String email, @Param("hashPassword") String password);
 }
-// insert into users (username, email, password) values ("aa", "aaa@bb.cc", "hugahuga");

@@ -8,7 +8,7 @@ import lombok.Data;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @Data
-public class SearchBooksItem {
+public class SearchBooksItemDto {
     @XmlElement(name = "author")
     private String author;
     @XmlElement(name = "authorKana")

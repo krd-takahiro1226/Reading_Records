@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.readrecords.backend.entity.UserLogin;
 
 @Repository
-public interface UserLoginRepostoty extends JpaRepository<UserLogin, Long> {
+public interface UserLoginRepostoty extends JpaRepository<UserLogin, String> {
   @Query(value = "select * from users " + "where username = :username", nativeQuery = true)
   Optional<UserLogin> findByUsername(@Param("username") String username);
 

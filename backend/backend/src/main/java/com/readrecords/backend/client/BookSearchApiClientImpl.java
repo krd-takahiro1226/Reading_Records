@@ -11,14 +11,14 @@ import java.net.URLEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.readrecords.backend.dto.SearchBooksResponse;
+import com.readrecords.backend.dto.SearchBooksResponseDto;
 import com.readrecords.backend.service.XmlParser;
 
 @Service
 public class BookSearchApiClientImpl implements BookSearchApiClient {
   @Autowired XmlParser xmlParser;
   @Override
-  public SearchBooksResponse getBookSearch(String title, String author, String publisherName, String isbn) throws Exception {
+  public SearchBooksResponseDto getBookSearch(String title, String author, String publisherName, String isbn) throws Exception {
     // ベースとなるリクエストURLの作成
     String requestPath = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?";
     String applicationId = "1002321977022357484";

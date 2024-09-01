@@ -45,4 +45,7 @@ public class UserLoginDetails implements UserDetails {
     // return authorities;
     return null;
   }
+  public String getUserId() {
+    return userLogin.getUser_id();
+  }
 }
