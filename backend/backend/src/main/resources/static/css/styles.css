@@ -10,7 +10,8 @@ body {
 }
 
 .container {
-  width: 300px;
+  width: 60%;
+  
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
@@ -29,20 +30,24 @@ body {
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+}
+.form-group input{
+  margin-left: 10px;
+  width: 90%;
 }
 
 .form-group input[type="text"],
 .form-group input[type="password"],
 .form-group input[type="search"] {
-  width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-/*
+
 .buttons {
   margin-top: 20px;
+  text-align: center;
 }
 
 .buttons button {
@@ -53,21 +58,29 @@ body {
   background-color: #4CAF50;
   color: white;
   cursor: pointer;
-  width: 100%;
+  
 }
 
 .buttons button:hover {
   background-color: #45a049;
 }
 
-.buttons .clear {
+.buttons button.clear {
   background-color: #f44336;
 }
 
-.buttons .clear:hover {
-  background-color: #e53935;
+.buttons button.clear:hover {
+  background-color: #d32f2f;
 }
-*/
+
+.buttons .cancel-button {
+  background-color: #f44336; /* キャンセルボタンの背景色を赤に設定 */
+  max-width: 200px;
+}
+
+.buttons .cancel-button:hover {
+  background-color: #d32f2f; /* ホバー時の背景色を変更 */
+}
 
 
 select {
@@ -76,6 +89,95 @@ select {
   border-radius: 4px;
   margin-left: 5px;
 }
+
+/* テーブルのスタイル */
+table.book-list {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table.book-list th, table.book-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table.book-list th {
+  background-color: #f2f2f2;
+}
+/*
+table.book-list tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+*/
+table.book-list tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.reserve-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  min-width: 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.reserve-button:hover {
+  background-color: #45a049;
+}
+
+
+
+
+/* ラジオボタンのスタイル */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer; /* カーソルをポインターにする */
+}
+
+
+
+/* ラジオボタンのスタイル */
+.radio-group .radio-label {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* 背景色の変化をアニメーション化 */
+  min-width: 200px;
+}
+
+.radio-group .radio-label:hover {
+  background-color: #f0f0f0; /* ホバー時の背景色を変更 */
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 10px;
+}
+
+
+
+
 
 /* no-spin */
 /* .no-spin::-webkit-inner-spin-button,
