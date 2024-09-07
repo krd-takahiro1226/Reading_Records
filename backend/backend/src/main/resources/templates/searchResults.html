@@ -23,50 +23,6 @@
         }
 
 
-        table.book-list {
-            width: 100%;
-            min-width: 800px;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table.book-list th, table.book-list td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-
-        table.book-list th {
-            background-color: #f2f2f2;
-        }
-/*
-        table.book-list tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-*/
-        table.book-list tbody tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .reserve-button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 8px 10px;
-            min-width: 50px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .reserve-button:hover {
-            background-color: #45a049;
-        }
-
 
         /* ポップアップウィンドウのスタイル */
         .popup {
@@ -176,11 +132,12 @@
         </div>
 
         <div th:if="${response.items == null}">
-            <p>書籍が見つかりませんでした。</p>
+            <p>検索条件に一致する書籍が見つかりませんでした。</p>
         </div>
 
         <div class="buttons">
             <button class="button" onclick="location.href='/searchBooks'">再検索</button>
+            <button class="button" onclick="location.href='/menu'">メニューに戻る</button>
         </div>
         
     </div>
