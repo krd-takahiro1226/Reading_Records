@@ -1,37 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>サンプル</title>
+	<meta charset="UTF-8">
+	<title>サンプル</title>
+	<link rel="stylesheet" href="/css/styles.css">
+	<style>
+		body {
+            height: 100%;
+        }
+        .container {
+            width: 90%;
+            overflow-x: auto;
+        }
+		.buttons button {
+            width: 40%;
+            max-width: 200px;
+        }
+	</style>
 </head>
+
 <body>
-	<h1>読んだ本一覧</h1>
-	<table border="1" th:unless="${#lists.isEmpty(readRecords)}" style="table-layout: fixed;">
-		<tr>
-			<th>ISBN</th>
-			<th>書籍名</th>
-			<th>著者</th>
-			<th>読み始めた日</th>
-      <th>読了日</th>
-      <th>読んだ回数</th>
-      <th>優先度</th>
-      <th>メモ</th>
-		</tr>
-		<tr th:each="obj : ${readRecords}" align="center">
-			<td th:text="${obj.ISBN}"></td>
-			<td th:text="${obj.book_name}"></td>
-			<td th:text="${obj.author}"></td>
-      <td th:text="${obj.start_date}"></td>
-      <td th:text="${obj.end_date}"></td>
-      <td th:text="${obj.read_count}"></td>
-      <td th:text="${obj.priority}"></td>
-      <td th:text="${obj.memo}"></td>
-			<!-- 編集ボタン -->
-			<td>
-				<form method="get" th:action="@{sample/{id}(id=${obj.ISBN})}">
-					<input type="submit" value="編集">
-				</form>
-			</td>
-		</tr>
-	</table>
+	<div class="container">
+		<h1>読んだ本一覧</h1>
+		<table border="1" th:unless="${#lists.isEmpty(readRecords)}" class="book-list" ><!--style="table-layout: fixed;"-->
+			<tr>
+				<th>ISBN</th>
+				<th>書籍名</th>
+				<th>著者</th>
+				<th>読み始めた日</th>
+				<th>読了日</th>
+				<th>読んだ回数</th>
+				<th>優先度</th>
+				<th>メモ</th>
+				<th>編集</th>
+			</tr>
+			<tr th:each="obj : ${readRecords}" align="center">
+				<td th:text="${obj.ISBN}"></td>
+				<td th:text="${obj.book_name}"></td>
+				<td th:text="${obj.author}"></td>
+				<td th:text="${obj.start_date}"></td>
+				<td th:text="${obj.end_date}"></td>
+				<td th:text="${obj.read_count}"></td>
+				<td th:text="${obj.priority}"></td>
+				<td th:text="${obj.memo}"></td>
+				<!-- 編集ボタン -->
+				<td>
+					<form method="get" th:action="@{sample/{id}(id=${obj.ISBN})}">
+						<input type="submit" value="編集">
+					</form>
+				</td>
+			</tr>
+		</table>
+
+		<div class="buttons">
+            <button class="button" onclick="location.href='/menu'">メニューに戻る</button>
+        </div>
+	</div>
 </body>
