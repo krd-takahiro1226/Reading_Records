@@ -90,15 +90,7 @@
     <h2>ログイン</h2>
     <form th:action="@{/login}" action = "show.html" method="post">
 
-        <!-- エラー時メッセージ-->
-        <div>
-            <p class="error-font-red" th:if="${param.error}">
-                
-                <b>ログインできませんでした。</b><br>
-                入力内容をご確認の上、<br>
-                もう一度お試しください。
-            </p>
-        </div> 
+         
 
         <div class="form-group">
             <label for="username">ユーザー名</label>
